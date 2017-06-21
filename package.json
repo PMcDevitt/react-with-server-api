@@ -1,0 +1,26 @@
+{
+  "name": "react-with-server-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd client & npm start",
+    "start5": "node index.js",
+    "clean": "mkdir build",
+    "build-server": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-server",
+    "postbuild": "cd client & npm run build & cd ..",
+    "start": "node ./build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "express": "^4.15.3",
+    "password-generator": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.5.2"
+  }
+}
