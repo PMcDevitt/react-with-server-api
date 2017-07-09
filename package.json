@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd client & npm start",
     "start5": "node index.js",
-    "clean": "mkdir build",
+    "clean": "rimraf build && mkdir build",
     "build-server": "babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-server",
     "postbuild": "cd client & npm run build & cd ..",
@@ -21,6 +21,8 @@
     "password-generator": "^2.1.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.5.2"
+    "babel-preset-env": "^1.5.2",
+    "karma": "^1.7.0",
+    "rimraf": "^2.6.1"
   }
 }
