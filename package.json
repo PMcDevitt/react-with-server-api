@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cd client & npm start",
+    "test:client": "cd client & npm start",
     "start5": "node index.js",
     "clean": "rimraf build && mkdir build",
+    "test": "mocha --compilers babel-core/register ./tests/**/*test.js",
     "build-server": "babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-server",
     "postbuild": "cd client & npm run build & cd ..",
@@ -21,8 +22,10 @@
     "password-generator": "^2.1.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.5.2",
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
     "karma": "^1.7.0",
+    "mocha": "^3.4.2",
     "rimraf": "^2.6.1"
   }
 }

@@ -42,18 +42,15 @@ describe('Given the App Component', ()=>{
       .get('/api/passwords')
       .reply(200,{})
       let wrapper = shallow(<App />)
-       console.log(1,wrapper.state().passwords)
       wrapper.instance().getPasswords()
-     done()
+      done()
     });
     it('testing getPasswords()', (done) => {
       let wrapper = mount(<App />)
-      console.log(2,wrapper.state().passwords)
       wrapper.setState({
         passwords: ['Foo', 'Bar']
       })
       wrapper.instance().getPasswords()
-      console.log(3,wrapper.state().passwords)
       done()
     })
   })
