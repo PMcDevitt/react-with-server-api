@@ -5,10 +5,10 @@ import path from 'path'
 import generatePassword from 'password-generator'
 
 const app = express()
-//Add cors to all routes
-//app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Add cors to all routes
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 // Serve static files from the React app
 app.use(express.static(path.resolve(__dirname, '../client/build')))
 
@@ -25,9 +25,8 @@ app.get('/api/passwords', cors(), (req, res) => {
   console.log(`Sent ${count} passwords`)
 })
 // Put all API endpoints under '/api'
-app.post('/api/passwords', cors(), (req, res) => {
+app.post('/api/passwords', (req, res) => {
   console.log(req.body)
-   console.log(req.data)
   const count = 4
   // Generate some passwords
   const passwords = Array.from(Array(count).keys()).map(i =>
@@ -38,7 +37,7 @@ app.post('/api/passwords', cors(), (req, res) => {
 
   console.log(`Sent ${count} passwords`)
 })
-//C:\Users\Paddy\Documents\GitHub\react-with-server-api\client\.babelrc
+// C:\Users\Paddy\Documents\GitHub\react-with-server-api\client\.babelrc
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('/', (req, res) => {

@@ -19,25 +19,27 @@ class PasswordPage extends Component {
     fetch('http://localhost:5001/api/passwords')
       .then(res => {
         console.log(res)
-        return res.json()})
+        return res.json()
+      })
       .then(passwords => this.setState({ passwords }))
   }
-   getPasswordsPost () {
-    // Get the passwords and store them in state
-    let body = JSON.stringify({username:'test',password:'test'})
-    fetch('http://localhost:5001/api/passwords', {
-      method: 'post',
-      body: 'body'
-    })
-    .then(res => {
-      console.log(111, res)
-      return res.json()})
-    .then(passwords => this.setState({ passwords }))
-  }
+  // getPasswordsPost () {
+  //   // Get the passwords and store them in state
+  //   let body = JSON.stringify({username: 'test', password: 'test'})
+  //   fetch('http://localhost:5001/api/passwords', {
+  //     method: 'post',
+  //     body: body
+  //   })
+  //   .then(res => {
+  //     console.log(111, res)
+  //     return res.json()
+  //   })
+  //   .then(passwords => this.setState({ passwords }))
+  // }
 
   getPasswordsPost () {
     // Get the passwords and store them in state
-    fetch('http://localhost:5000/api/passwords',{
+    fetch('http://localhost:5001/api/passwords', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -52,7 +54,7 @@ class PasswordPage extends Component {
   }
 
   render () {
-    const passwords  = this.state.passwords
+    const passwords = this.state.passwords
     console.log(passwords)
 
     return (

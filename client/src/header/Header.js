@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
 class Header extends Component {
-
-  renderLinks(){
-    return(
+  renderLinks () {
+    return (
       <nav>
         <Link to='/'>Home</Link>  |
         <Link to='/passwords'>Passwords</Link> |
@@ -14,15 +13,15 @@ class Header extends Component {
     )
   }
 
-  renderRedirect(){
+  renderRedirect () {
     return (<nav><Link to='/about'>Login</Link> Please login</nav>)
   }
 
   render () {
     return (
-    <header>
-      {this.props.loggedIn ? this.renderLinks(): this.renderRedirect()}
-    </header>
+      <header>
+        {this.props.loggedIn ? this.renderLinks() : this.renderRedirect()}
+      </header>
     )
   }
 }

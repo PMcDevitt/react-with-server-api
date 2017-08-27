@@ -17,13 +17,12 @@ class App extends Component {
       GivenName: name,
       loggedIn: !this.state.loggedIn
     })
-
   }
 
   render () {
     return (
       <div className='App-MainContainer-Div'>
-        <Header name={this.state.GivenName} loggedIn={this.state.loggedIn}/>
+        <Header name={this.state.GivenName} loggedIn={this.state.loggedIn} />
         <Routes setName={this.setName} loggedIn={this.state.loggedIn} />
       </div>
     )
