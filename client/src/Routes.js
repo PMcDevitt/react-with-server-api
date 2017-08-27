@@ -7,12 +7,13 @@ import AboutPage from './about/AboutPage'
 const Routes = (props)=> {
 
 return (<div>
-    {props.loggedIn ?loggedinRoutes(props):logRoute(props) }
+    {props.loggedIn ? loggedinRoutes(props) : logRoute(props) }
   </div>)
 }
 
-const loggedinRoutes =(props)=>{
-return(<main>
+const loggedinRoutes = (props)=>{
+  return(
+    <main>
       <Switch>
         <Route exact path='/' component={HomePage}/>
         <Route path='/about' render={() => (
@@ -21,9 +22,10 @@ return(<main>
         <Route path='/passwords' component={PasswordPage} />
         <Route component={AboutPage}/>
       </Switch>
-    </main>)
+    </main>
+  )
 }
-const logRoute =(props)=>{
+const logRoute = (props)=>{
 return(<main>
       <Switch>
         <Route path='/' render={() => (

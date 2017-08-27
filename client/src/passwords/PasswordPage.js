@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import fetch from 'isomorphic-fetch'
-
+import es6 from 'es6-promise'
+es6.polyfill()
 class PasswordPage extends Component {
   constructor (props) {
     super(props)
@@ -9,18 +10,33 @@ class PasswordPage extends Component {
 
   // Fetch passwords after first mount
   componentDidMount () {
-    this.getPasswords()
+    this.getPasswordsPost()
   }
 
   getPasswords () {
     // Get the passwords and store them in state
     fetch('http://localhost:5001/api/passwords')
-      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        return res.json()})
       .then(passwords => this.setState({ passwords }))
+  }
+   getPasswordsPost () {
+    // Get the passwords and store them in state
+    let body = JSON.stringify({username:'test',password:'test'})
+    fetch('http://localhost:5001/api/passwords', {
+      method: 'post',
+      body: 'body'
+    })
+    .then(res => {
+      console.log(111, res)
+      return res.json()})
+    .then(passwords => this.setState({ passwords }))
   }
 
   render () {
-    const { passwords } = this.state
+    const passwords  = this.state.passwords
+    console.log(passwords)
 
     return (
       <div className='App'>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react'
 import Header from './header/Header.js'
 import Routes from './Routes'
