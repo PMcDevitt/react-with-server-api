@@ -6,6 +6,7 @@ class PasswordPage extends Component {
   constructor (props) {
     super(props)
     this.state = { passwords: [] }
+    this.getPasswordsPost = this.getPasswordsPost.bind(this)
   }
 
   // Fetch passwords after first mount
@@ -34,6 +35,22 @@ class PasswordPage extends Component {
     .then(passwords => this.setState({ passwords }))
   }
 
+  getPasswordsPost () {
+    // Get the passwords and store them in state
+    fetch('http://localhost:5000/api/passwords',{
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'xxx'
+      })
+    })
+    .then(res => res.json())
+    .then(passwords => this.setState({ passwords }))
+  }
+
   render () {
     const passwords  = this.state.passwords
     console.log(passwords)
@@ -59,7 +76,7 @@ class PasswordPage extends Component {
             </ul>
             <button
               className='more'
-              onClick={this.getPasswords}>
+              onClick={this.getPasswordsPost}>
               Get More
             </button>
           </div>
@@ -69,7 +86,7 @@ class PasswordPage extends Component {
             <h1>No passwords :(</h1>
             <button
               className='more'
-              onClick={this.getPasswords}>
+              onClick={this.getPasswordsPost}>
               Try Again?
             </button>
           </div>
