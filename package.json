@@ -10,8 +10,9 @@
     "test": "mocha --compilers babel-core/register ./tests/**/*test.js",
     "build-server": "babel -d ./build ./server -s",
     "build": "npm run clean && npm run build-server",
-    "postbuild": "cd client & npm run build & cd ..",
-    "start": "node ./build/index.js"
+    "XXpostbuild": "cd client & npm run build & cd ..",
+    "start": "npm run build",
+    "poststart": "node ./build/index.js"
   },
   "keywords": [],
   "author": "Patrick McDevitt",
