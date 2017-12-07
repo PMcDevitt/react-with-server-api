@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import fetch from 'isomorphic-fetch'
 import es6 from 'es6-promise'
 es6.polyfill()
-
+//const url = 'http://localhost:5001/api/passwords'
+const url = 'https://localhost:3001/api/passwords'
 class PasswordPage extends Component {
   constructor (props) {
     super(props)
@@ -18,22 +19,24 @@ class PasswordPage extends Component {
 
   getPasswords () {
     // Get the passwords and store them in state
-    fetch('http://localhost:5001/api/passwords')
+    fetch(url)
       .then(res => {
         console.log(res)
         return res.json()
       })
       .then(passwords => this.setState({ passwords }))
+      .catch(error => console.log('getPwords', error))
   }
    getPasswordsPost () {
     // Get the passwords and store them in state
     let body = JSON.stringify({username:'test',password:'test'})
-    fetch('http://localhost:5001/api/passwords', {
+    fetch(url, {
       method: 'post',
       body: body
     })
     .then(res => res.json())
     .then(passwords => this.setState({ passwords }))
+    .catch(error => console.log('postPwords', error))
   }
 
   // getPasswordsPost () {

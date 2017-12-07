@@ -1,5 +1,6 @@
 import React from 'react'
-
+//const url = 'http://localhost:5001/api/passwords'
+const url = 'https://localhost:3001/api/passwords'
 class Passwords extends React.Component{
   state = { passwords: []}
   componentDidMount = () =>{
@@ -7,20 +8,12 @@ class Passwords extends React.Component{
   }
   getPasswords = () => {
     let body = JSON.stringify({username:'test',password:'test'})
-    fetch('http://localhost:5001/api/passwords', {
+    fetch(url, {
       method: 'post',
       body: body
     })
     .then(res => res.json())
-    .then(passwords => {
-      console.log(111, passwords);
-      this.checkArrayLength(passwords)
-      return passwords
-    })
     .then(passwords => this.setState({ passwords }))
-  }
-  checkArrayLength = (pw) => {
-    console.log('testing', pw);
   }
 
   render () {

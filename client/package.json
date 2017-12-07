@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node scripts/start.js",
+    "clean": "rimraf build && mkdir build",
+    "prebuild": "npm run clean",
     "build": "node scripts/build.js",
     "test": "mocha --require ./scripts/testSetup.js --compilers babel-core/register ./src/**/*test.js",
     "e2e": "babel-node node_modules/.bin/protractor ./protractor.conf.js",
@@ -91,7 +93,7 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2"
   },
-  "proxy": "http://localhost:5001",
+  "proxy": "https://localhost:3001",
   "eslintConfig": {
     "extends": "react-app"
   }
